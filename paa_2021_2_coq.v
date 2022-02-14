@@ -223,6 +223,29 @@ Qed.
 Lemma Permutation_implica_perm': forall l l', Permutation l l' -> perm' l l'.
 Proof.
   induction 1.
+  - unfold perm'.
+    intro x.
+    reflexivity.
+  - simpl.
+    unfold perm' in *.
+    intros.
+    simpl.
+    destruct (x0 =? x).
+      auto.
+      apply IHPermutation.
+  - simpl.
+    unfold perm'.
+    intros.
+    simpl.
+    destruct (x0 =? y).
+    destruct (x0 =? x).
+    auto.
+    auto.
+    destruct (x0 =? x).
+    auto.
+    auto.
+  - unfold perm' in *. 
+    intro x.
 (*  intros l l' H.
   induction H. *)
 Admitted.
